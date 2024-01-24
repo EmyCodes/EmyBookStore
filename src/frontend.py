@@ -21,6 +21,13 @@ HAS BUTTON;
     Close
 """
 
+def get_selected_row(event):
+    index = list_box1.curselection()[0]
+    selected_tuple = list_box1.get(index)
+    # return selected_tuple
+    print(selected_tuple)
+
+
 def view_all():
     list_box1.delete(0, END)
     for row in view():
@@ -110,5 +117,6 @@ sb1.grid(row=2, column=2, rowspan=6)
 
 list_box1.config(yscrollcommand=sb1.set)
 sb1.config(command=list_box1.yview)
+list_box1.bind("<<ListboxSelect>>", get_selected_row)
 
 window.mainloop()
