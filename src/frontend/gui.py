@@ -78,4 +78,5 @@ sb1.grid(row=2, column=2, rowspan=6)
 
 list_box.config(yscrollcommand=sb1.set)
 sb1.config(command=list_box.yview)
+
 window.mainloop()
