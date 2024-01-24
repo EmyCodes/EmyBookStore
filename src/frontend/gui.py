@@ -73,7 +73,7 @@ b6.grid(row=7, column=3)
 list_box = Listbox(window, height=6, width=35, border=2)
 list_box.grid(row=2, column=0, rowspan=6, columnspan=2)
 
-sb1 = Scrollbar(window)
+sb1 = Scrollbar(window, width=15)
 sb1.grid(row=2, column=2, rowspan=6)
 
 list_box.config(yscrollcommand=sb1.set)
