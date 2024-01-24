@@ -50,8 +50,8 @@ def add_command():
 def update_command():
     list_box1.delete(0, END)
     id = selected_tuple[0]
-    update(id,  author_text.get(), year_text.get(), isbn_text.get())
-    list_box1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
+    update(id, author_text.get(), year_text.get(), isbn_text.get())
+    list_box1.insert(END, (id, title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
 
 
 def delete_command():
