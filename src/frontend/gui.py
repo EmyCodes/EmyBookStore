@@ -65,4 +65,8 @@ b5.grid(row=6, column=3)
 b6 = Button(window, text="Close")
 b6.grid(row=7, column=3)
 
+# ListBox
+list_box = Listbox(window, height=10, width=12)
+list_box.grid(row=2, column=0, rowspan=2)
+
 window.mainloop()
