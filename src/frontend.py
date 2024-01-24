@@ -52,8 +52,6 @@ def update_command():
     id = selected_tuple[0]
     update(id,  author_text.get(), year_text.get(), isbn_text.get())
     list_box1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
-    # update(selected_tuple[0], selected_tuple[1], selected_tuple[2], selected_tuple[3], selected_tuple[4])
-    # list_box1.insert(END, (selected_tuple[0], selected_tuple[1], selected_tuple[2], selected_tuple[3], selected_tuple[4]))
 
 
 def delete_command():
