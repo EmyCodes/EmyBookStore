@@ -18,6 +18,9 @@ connect()
 
 
 def view():
+    """
+    Function list items of the database
+    """
     conn = sqlite3.connect("BookStore.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM BookStore")
