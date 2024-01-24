@@ -14,8 +14,6 @@ def connect():
     conn.commit()
     conn.close()
 
-connect()
-
 
 def view():
     """
@@ -24,6 +22,40 @@ def view():
     conn = sqlite3.connect("BookStore.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM BookStore")
+    rows = cur.fetchall()
+    conn.close()
+    for row in rows:
+        return row
+
+def search():
+    pass
+
+
+def add(title, author, year, isbn):
+    conn = sqlite3.connect("BookStore.db")
+    cur = conn.cursor()
+    cur.execute("INSERT INTO BookStore VALUES (NULL, ?, ?, ?, ?)", (title, author, year, isbn))
+    conn.commit()
     conn.close()
 
+
+def update():
+    pass
+
+
+def delete():
+    pass
+
+
+def close():
+    pass
+
+
+connect()
+# view()
+search()
+add("Believer's Authority", "Kenneth E. Hagin", 1980, 73773737373)
+update()
+delete()
+close()
 view()
