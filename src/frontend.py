@@ -50,8 +50,10 @@ def add_command():
 def update_command():
     list_box1.delete(0, END)
     id = selected_tuple[0]
-    update(id, title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    update(id,  author_text.get(), year_text.get(), isbn_text.get())
     list_box1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
+    # update(selected_tuple[0], selected_tuple[1], selected_tuple[2], selected_tuple[3], selected_tuple[4])
+    # list_box1.insert(END, (selected_tuple[0], selected_tuple[1], selected_tuple[2], selected_tuple[3], selected_tuple[4]))
 
 
 def delete_command():
@@ -113,10 +115,10 @@ b2.grid(row=3, column=3)
 b3 = Button(window, text="Add entry", width=12, border=3, command=add_command)
 b3.grid(row=4, column=3)
 
-b4 = Button(window, text="Update", width=12, border=3, command=update_command)
+b4 = Button(window, text="Update Selected", width=12, border=3, command=update_command)
 b4.grid(row=5, column=3)
 
-b5 = Button(window, text="Delete", width=12, border=3, command=delete_command)
+b5 = Button(window, text="Delete Selected", width=12, border=3, command=delete_command)
 b5.grid(row=6, column=3)
 
 b6 = Button(window, text="Close", width=12, border=3)
