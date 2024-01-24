@@ -41,18 +41,17 @@ def add_command():
 
 def update_command():
     list_box1.delete(0, END)
-    selected = get_selected_row("")
-    id = selected[0]
+    id = selected_tuple[0]
     update(id, title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
     list_box1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
 
 
 def delete_command():
-    selected = get_selected_row("")
-    id = selected[0]
-    delete(id)
+    delete(selected_tuple[0])
     list_box1.delete(0, END)
-
+    for row in view():
+        list_box1.insert(END, row)
+    
 
 
 def search_command():
