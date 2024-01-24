@@ -24,8 +24,8 @@ def view():
     cur.execute("SELECT * FROM BookStore")
     rows = cur.fetchall()
     conn.close()
-    for i in range(len(rows)):
-        print(rows[i])
+    # for i in range(len(rows)):
+    #     print(rows[i])
     return rows
 
 def search(title, author, year, isbn):
@@ -37,8 +37,8 @@ def search(title, author, year, isbn):
     cur.execute("SELECT * FROM BookStore WHERE title=? OR author=? OR year=? OR isbn", (title, author, year, isbn))
     rows = cur.fetchall()
     conn.close()
-    for i in range(len(rows)):
-        print(rows[i])
+    # for i in range(len(rows)):
+    #     print(rows[i])
     return rows
 
 
