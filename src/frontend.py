@@ -22,10 +22,9 @@ HAS BUTTON;
 """
 
 def get_selected_row(event):
+    global selected_tuple
     index = list_box1.curselection()[0]
     selected_tuple = list_box1.get(index)
-    return selected_tuple
-    # print(selected_tuple)
 
 
 def view_all():
@@ -53,8 +52,7 @@ def delete_command():
     id = selected[0]
     delete(id)
     list_box1.delete(0, END)
-    for row in view():
-        list_box1.insert(END, row)
+
 
 
 def search_command():
