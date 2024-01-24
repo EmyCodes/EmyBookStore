@@ -26,8 +26,9 @@ def view():
     conn.close()
     for i in range(len(rows)):
         print(rows[i])
+    return rows
 
-def search(title="", author="", year="", isbn=""):
+def search(title, author, year, isbn):
     """
     Searches for Specified iem
     """
@@ -38,6 +39,7 @@ def search(title="", author="", year="", isbn=""):
     conn.close()
     for i in range(len(rows)):
         print(rows[i])
+    return rows
 
 
 def add(title, author, year, isbn):
