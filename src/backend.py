@@ -28,7 +28,7 @@ def view():
     #     print(rows[i])
     return rows
 
-def search(title, author, year, isbn):
+def search(title="", author="", year="", isbn=""):
     """
     Searches for Specified iem
     """
@@ -71,7 +71,7 @@ def close():
 
 connect()
 # view()
-# search("Believer's Authority", "Kenneth E. Hagin", 1980, 73773737373)
+# search(author="Kenneth E. Hagin")
 # add("Believer's Authority", 'Kenneth E. Hagin', 1980, 73773737373)
 # add("Believer's Love Walk", 'Kenneth E. Hagin', 1983, 30736593)
 # add('The Anointing', 'Kenneth E. Hagin', 1960, 12455673)
