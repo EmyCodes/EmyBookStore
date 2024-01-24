@@ -28,7 +28,10 @@ def view():
         return row
 
 
-def search(title, author, year, isbn):
+def search(title="", author="", year="", isbn=""):
+    """
+    Searches for Specified iem
+    """
     conn = sqlite3.connect("BookStore.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM BookStore WHERE title=? OR author=? OR year=? OR isbn", (title, author, year, isbn))
