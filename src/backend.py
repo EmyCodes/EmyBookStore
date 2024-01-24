@@ -34,8 +34,11 @@ def search(title="", author="", year="", isbn=""):
     """
     conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
-    cur.execute("SELECT * FROM BookStore WHERE title=? OR author=? OR year=? OR isbn", (title, author, year, isbn))
+    cur.execute("SELECT * FROM BookStore WHERE title=? OR author=? OR year=? OR isbn=?", (title, author, year, isbn))
     rows = cur.fetchall()
+    # if len(rows) == 0:
+    #     return "Not Found"
+    # print(rows)
     conn.close()
     # for i in range(len(rows)):
     #     print(rows[i])
@@ -71,7 +74,7 @@ def close():
 
 connect()
 # view()
-# search(author="Kenneth E. Hagin")
+search(author="Kenneth E. Hagin")
 # add("Believer's Authority", 'Kenneth E. Hagin', 1980, 73773737373)
 # add("Believer's Love Walk", 'Kenneth E. Hagin', 1983, 30736593)
 # add('The Anointing', 'Kenneth E. Hagin', 1960, 12455673)
