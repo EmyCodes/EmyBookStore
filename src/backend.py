@@ -4,13 +4,16 @@ import sqlite3
 The Engineering Part of the BookStore
 """
 
+
 def connect():
     """
     Function creates connection to the database
     """
     conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS BookStore (id INTEGER PRIMARY KEY, title text, author text, year integer, isbn integer)")
+    cur.execute("CREATE TABLE IF NOT EXISTS BookStore \
+                (id INTEGER PRIMARY KEY, title text, \
+                author text, year integer, isbn integer)")
     conn.commit()
     conn.close()
 
@@ -28,13 +31,16 @@ def view():
     #     print(rows[i])
     return rows
 
+
 def search(title="", author="", year="", isbn=""):
     """
     Searches for Specified iem
     """
     conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
-    cur.execute("SELECT * FROM BookStore WHERE title=? OR author=? OR year=? OR isbn=?", (title, author, year, isbn))
+    cur.execute("SELECT * FROM BookStore WHERE title=? \
+                OR author=? OR year=? OR isbn=?",
+                (title, author, year, isbn))
     rows = cur.fetchall()
     # if len(rows) == 0:
     #     return "Not Found"
@@ -48,7 +54,9 @@ def search(title="", author="", year="", isbn=""):
 def add(title, author, year, isbn):
     conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
-    cur.execute("INSERT INTO BookStore VALUES (NULL, ?, ?, ?, ?)", (title, author, year, isbn))
+    cur.execute("INSERT INTO BookStore \
+                VALUES (NULL, ?, ?, ?, ?)",
+                (title, author, year, isbn))
     conn.commit()
     conn.close()
 
@@ -56,7 +64,8 @@ def add(title, author, year, isbn):
 def update(id, title="", author="", year="", isbn=""):
     conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
-    cur.execute("UPDATE BookStore SET title=?, author=?, year=?, isbn=? WHERE id=?", (title, author, year, isbn, id))
+    cur.execute("UPDATE BookStore SET title=?, author=?, year=?, \
+                isbn=? WHERE id=?", (title, author, year, isbn, id))
     conn.commit()
     conn.close()
 
