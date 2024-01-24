@@ -68,9 +68,6 @@ def delete(id):
     conn.commit()
     conn.close()
 
-def close():
-    pass
-
 
 connect()
 # view()
