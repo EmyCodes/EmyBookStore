@@ -8,7 +8,7 @@ def connect():
     """
     Function creates connection to the database
     """
-    conn = sqlite3.connect("BookStore.db")
+    conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS BookStore (id INTEGER PRIMARY KEY, author text, title text, year integer, isbn integer)")
     conn.commit()
@@ -19,7 +19,7 @@ def view():
     """
     Function list items of the database
     """
-    conn = sqlite3.connect("BookStore.db")
+    conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM BookStore")
     rows = cur.fetchall()
@@ -32,7 +32,7 @@ def search(title="", author="", year="", isbn=""):
     """
     Searches for Specified iem
     """
-    conn = sqlite3.connect("BookStore.db")
+    conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM BookStore WHERE title=? OR author=? OR year=? OR isbn", (title, author, year, isbn))
     rows = cur.fetchall()
@@ -42,7 +42,7 @@ def search(title="", author="", year="", isbn=""):
 
 
 def add(title, author, year, isbn):
-    conn = sqlite3.connect("BookStore.db")
+    conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("INSERT INTO BookStore VALUES (NULL, ?, ?, ?, ?)", (title, author, year, isbn))
     conn.commit()
@@ -50,7 +50,7 @@ def add(title, author, year, isbn):
 
 
 def update(id, title, author, year, isbn):
-    conn = sqlite3.connect("BookStore.db")
+    conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("UPDATE BookStore SET title=?, author=?, year=?, isbn=? WHERE id=?", (title, author, year, isbn, id))
     conn.commit()
@@ -58,7 +58,7 @@ def update(id, title, author, year, isbn):
 
 
 def delete(id):
-    conn = sqlite3.connect("BookStore.db")
+    conn = sqlite3.connect("EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("DELETE FROM BookStore WHERE id=?", (id,))
     conn.commit()
@@ -70,7 +70,7 @@ def close():
 
 connect()
 # view()
-search("Kenneth E. Hagin")
+# search("Kenneth E. Hagin")
 add("Believer's Authority", "Kenneth E. Hagin", 1980, 73773737373)
 add("Believer's Love Walk", "Kenneth E. Hagin", 1983, 783-3-73737373)
 # update(1)
