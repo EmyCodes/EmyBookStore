@@ -68,9 +68,10 @@ def close():
 
 connect()
 # view()
-search(1)
+search("Kenneth E. Hagin")
 add("Believer's Authority", "Kenneth E. Hagin", 1980, 73773737373)
-update(1)
-delete(1)
+add("Believer's Love Walk", "Kenneth E. Hagin", 1983, 783-3-73737373)
+# update(1)
+# delete(1)
 # close()
 view()
