@@ -27,8 +27,13 @@ def view():
     for row in rows:
         return row
 
+
 def search(id):
-    pass
+    conn = sqlite3.connect("BookStore.db")
+    cur = conn.cursor()
+    cur.execute("SELECT ? FROM BookStore", (id,))
+    conn.commit()
+    conn.close()
 
 
 def add(title, author, year, isbn):
