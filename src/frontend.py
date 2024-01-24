@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from tkinter import *
 
-from backend import connect, add, update, delete, search, view, close
+from backend import connect, add, update, delete, search, view
 
 """
 GUI of BookStore
@@ -119,7 +119,7 @@ b4.grid(row=5, column=3)
 b5 = Button(window, text="Delete Selected", width=12, border=3, command=delete_command)
 b5.grid(row=6, column=3)
 
-b6 = Button(window, text="Close", width=12, border=3)
+b6 = Button(window, text="Close", width=12, border=3, command=window.destroy)
 b6.grid(row=7, column=3)
 
 # ListBox
