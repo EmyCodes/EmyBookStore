@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from tkinter import *
 
-from backend.engine import connect, add, update, delete, search, view, close
+from backend import connect, add, update, delete, search, view, close
 
 """
 GUI of BookStore
