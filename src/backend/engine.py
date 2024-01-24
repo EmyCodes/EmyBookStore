@@ -35,8 +35,10 @@ def search(title="", author="", year="", isbn=""):
     conn = sqlite3.connect("BookStore.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM BookStore WHERE title=? OR author=? OR year=? OR isbn", (title, author, year, isbn))
-    conn.commit()
+    rows = cur.fetchall()
     conn.close()
+    for row in rows:
+        return row
 
 
 def add(title, author, year, isbn):
@@ -47,7 +49,7 @@ def add(title, author, year, isbn):
     conn.close()
 
 
-def update(id, title="", author="", year="", isbn=""):
+def update(id, title, author, year, isbn):
     conn = sqlite3.connect("BookStore.db")
     cur = conn.cursor()
     cur.execute("UPDATE BookStore SET title=?, author=?, year=?, isbn=? WHERE id=?", (title, author, year, isbn, id))
