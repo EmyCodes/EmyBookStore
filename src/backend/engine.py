@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sqlite3
 """
-The Engineering Part of BookStore
+The Engineering Part of the BookStore
 """
 
 def connect():
@@ -39,10 +39,6 @@ def add(title, author, year, isbn):
     conn.close()
 
 
-def update():
-    pass
-
-
 def delete():
     pass
 
@@ -55,7 +51,7 @@ connect()
 # view()
 search()
 add("Believer's Authority", "Kenneth E. Hagin", 1980, 73773737373)
-update()
-delete()
-close()
+update(1)
+# delete()
+# close()
 view()
