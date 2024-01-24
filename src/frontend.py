@@ -21,6 +21,7 @@ HAS BUTTON;
     Close
 """
 
+
 def get_selected_row(event):
     global selected_tuple
     index = list_box1.curselection()[0]
@@ -32,8 +33,8 @@ def get_selected_row(event):
     e3.delete(0, END)
     e3.insert(END, selected_tuple[3])
     e4.delete(0, END)
-    e4.insert(END, selected_tuple[4]) 
-   
+    e4.insert(END, selected_tuple[4])
+
 
 def view_all():
     list_box1.delete(0, END)
@@ -44,14 +45,17 @@ def view_all():
 def add_command():
     add(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
     list_box1.delete(0, END)
-    list_box1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
+    list_box1.insert(END, (title_text.get(), author_text.get(),
+                           year_text.get(), isbn_text.get()))
 
 
 def update_command():
     list_box1.delete(0, END)
     id = selected_tuple[0]
-    update(id, title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
-    list_box1.insert(END, (id, title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
+    update(id, title_text.get(), author_text.get(),
+           year_text.get(), isbn_text.get())
+    list_box1.insert(END, (id, title_text.get(), author_text.get(),
+                           year_text.get(), isbn_text.get()))
 
 
 def delete_command():
@@ -59,16 +63,17 @@ def delete_command():
     list_box1.delete(0, END)
     for row in view():
         list_box1.insert(END, row)
-    
 
 
 def search_command():
     list_box1.delete(0, END)
-    rows = search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    rows = search(title_text.get(), author_text.get(),
+                  year_text.get(), isbn_text.get())
     if len(rows) == 0:
         list_box1.insert(END, "No records")
     for row in rows:
         list_box1.insert(END, row)
+
 
 window = Tk()
 
@@ -109,16 +114,20 @@ e4.grid(row=1, column=3)
 b1 = Button(window, text="View all", width=12, border=3, command=view_all)
 b1.grid(row=2, column=3)
 
-b2 = Button(window, text="Search entry", width=12, border=3, command=search_command)
+b2 = Button(window, text="Search entry", width=12,
+            border=3, command=search_command)
 b2.grid(row=3, column=3)
 
-b3 = Button(window, text="Add entry", width=12, border=3, command=add_command)
+b3 = Button(window, text="Add entry", width=12,
+            border=3, command=add_command)
 b3.grid(row=4, column=3)
 
-b4 = Button(window, text="Update Selected", width=12, border=3, command=update_command)
+b4 = Button(window, text="Update Selected", width=12,
+            border=3, command=update_command)
 b4.grid(row=5, column=3)
 
-b5 = Button(window, text="Delete Selected", width=12, border=3, command=delete_command)
+b5 = Button(window, text="Delete Selected", width=12,
+            border=3, command=delete_command)
 b5.grid(row=6, column=3)
 
 b6 = Button(window, text="Close", width=12, border=3, command=window.destroy)
