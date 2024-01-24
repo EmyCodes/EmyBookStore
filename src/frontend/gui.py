@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 from tkinter import *
 
-from backend import *
+from backend.engine import connect, add, update, delete, search, view, close
+
 """
 GUI of BookStore
 
@@ -20,7 +21,13 @@ HAS BUTTON;
     Close
 """
 
+def view_all():
+    for row in view():
+        list_box.insert(END, row)
+
+
 window = Tk()
+
 
 # Labels
 l1 = Label(window, text="Title")
@@ -53,19 +60,19 @@ e4 = Entry(window, textvariable=isbn_text, border=2)
 e4.grid(row=1, column=3)
 
 # Buttons
-b1 = Button(window, text="View all", width=12, border=3, command=view)
+b1 = Button(window, text="View all", width=12, border=3, command=view_all)
 b1.grid(row=2, column=3)
 
-b2 = Button(window, text="Search entry", width=12, border=3, command=search)
+b2 = Button(window, text="Search entry", width=12, border=3, command="")
 b2.grid(row=3, column=3)
 
-b3 = Button(window, text="Add entry", width=12, border=3, command=add)
+b3 = Button(window, text="Add entry", width=12, border=3, command='')
 b3.grid(row=4, column=3)
 
-b4 = Button(window, text="Update", width=12, border=3, command=update)
+b4 = Button(window, text="Update", width=12, border=3, command='')
 b4.grid(row=5, column=3)
 
-b5 = Button(window, text="Delete", width=12, border=3, command=delete)
+b5 = Button(window, text="Delete", width=12, border=3, command='')
 b5.grid(row=6, column=3)
 
 b6 = Button(window, text="Close", width=12, border=3)
