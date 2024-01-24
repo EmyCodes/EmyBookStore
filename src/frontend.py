@@ -27,6 +27,24 @@ def view_all():
         list_box1.insert(END, row)
 
 
+def add_command():
+    add(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    list_box1.delete(0, END)
+    list_box1.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
+
+
+def update_command():
+    pass
+
+
+def delete_command():
+    pass
+
+
+def search_command():
+    pass
+
+
 window = Tk()
 
 
@@ -64,16 +82,16 @@ e4.grid(row=1, column=3)
 b1 = Button(window, text="View all", width=12, border=3, command=view_all)
 b1.grid(row=2, column=3)
 
-b2 = Button(window, text="Search entry", width=12, border=3, command="")
+b2 = Button(window, text="Search entry", width=12, border=3, command=search_command)
 b2.grid(row=3, column=3)
 
-b3 = Button(window, text="Add entry", width=12, border=3, command='')
+b3 = Button(window, text="Add entry", width=12, border=3, command=add_command)
 b3.grid(row=4, column=3)
 
-b4 = Button(window, text="Update", width=12, border=3, command='')
+b4 = Button(window, text="Update", width=12, border=3, command=update_command)
 b4.grid(row=5, column=3)
 
-b5 = Button(window, text="Delete", width=12, border=3, command='')
+b5 = Button(window, text="Delete", width=12, border=3, command=delete_command)
 b5.grid(row=6, column=3)
 
 b6 = Button(window, text="Close", width=12, border=3)
