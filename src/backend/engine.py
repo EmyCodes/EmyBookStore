@@ -16,3 +16,11 @@ def connect():
 
 connect()
 
+
+def view():
+    conn = sqlite3.connect("BookStore.db")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM BookStore")
+    conn.close()
+
+view()
