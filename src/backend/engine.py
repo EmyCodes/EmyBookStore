@@ -28,10 +28,10 @@ def view():
         return row
 
 
-def search(id):
+def search(title, author, year, isbn):
     conn = sqlite3.connect("BookStore.db")
     cur = conn.cursor()
-    cur.execute("SELECT ? FROM BookStore", (id,))
+    cur.execute("SELECT * FROM BookStore WHERE title=? OR author=? OR year=? OR isbn", (title, author, year, isbn))
     conn.commit()
     conn.close()
 
@@ -65,7 +65,7 @@ def close():
 
 connect()
 # view()
-search()
+search(1)
 add("Believer's Authority", "Kenneth E. Hagin", 1980, 73773737373)
 update(1)
 delete(1)
