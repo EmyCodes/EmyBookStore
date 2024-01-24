@@ -22,8 +22,9 @@ HAS BUTTON;
 """
 
 def view_all():
+    list_box1.delete(0, END)
     for row in view():
-        list_box.insert(END, row)
+        list_box1.insert(END, row)
 
 
 window = Tk()
@@ -79,13 +80,13 @@ b6 = Button(window, text="Close", width=12, border=3)
 b6.grid(row=7, column=3)
 
 # ListBox
-list_box = Listbox(window, height=6, width=35, border=2)
-list_box.grid(row=2, column=0, rowspan=6, columnspan=2)
+list_box1 = Listbox(window, height=6, width=35, border=2)
+list_box1.grid(row=2, column=0, rowspan=6, columnspan=2)
 
 sb1 = Scrollbar(window, width=15)
 sb1.grid(row=2, column=2, rowspan=6)
 
-list_box.config(yscrollcommand=sb1.set)
-sb1.config(command=list_box.yview)
+list_box1.config(yscrollcommand=sb1.set)
+sb1.config(command=list_box1.yview)
 
 window.mainloop()
