@@ -27,7 +27,7 @@ def view():
     for row in rows:
         return row
 
-def search():
+def search(id):
     pass
 
 
@@ -47,9 +47,12 @@ def update(id, title="", author="", year="", isbn=""):
     conn.close()
 
 
-def delete():
-    pass
-
+def delete(id):
+    conn = sqlite3.connect("BookStore.db")
+    cur = conn.cursor()
+    cur.execute("DELETE FROM BookStore WHERE id=?", (id,))
+    conn.commit()
+    conn.close()
 
 def close():
     pass
@@ -60,6 +63,6 @@ connect()
 search()
 add("Believer's Authority", "Kenneth E. Hagin", 1980, 73773737373)
 update(1)
-# delete()
+delete(1)
 # close()
 view()
