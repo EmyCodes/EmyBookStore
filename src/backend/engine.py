@@ -39,6 +39,14 @@ def add(title, author, year, isbn):
     conn.close()
 
 
+def update(id, title="", author="", year="", isbn=""):
+    conn = sqlite3.connect("BookStore.db")
+    cur = conn.cursor()
+    cur.execute("UPDATE BookStore SET title=?, author=?, year=?, isbn=? WHERE id=?", (title, author, year, isbn, id))
+    conn.commit()
+    conn.close()
+
+
 def delete():
     pass
 
