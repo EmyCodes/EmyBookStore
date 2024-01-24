@@ -43,8 +43,10 @@ def delete_command():
 
 def search_command():
     list_box1.delete(0, END)
-    for row in search(title_text.get(), author_text.get(),\
-                      year_text.get(), isbn_text.get()):
+    rows = search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    if len(rows) == 0:
+        list_box1.insert(END, "No records")
+    for row in rows:
         list_box1.insert(END, row)
 
 window = Tk()
