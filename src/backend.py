@@ -9,7 +9,7 @@ def connect():
     """
     Function creates connection to the database
     """
-    conn = sqlite3.connect("EmyBookStore.db")
+    conn = sqlite3.connect(".EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS BookStore \
                 (id INTEGER PRIMARY KEY, title text, \
@@ -22,7 +22,7 @@ def view():
     """
     Function list items of the database
     """
-    conn = sqlite3.connect("EmyBookStore.db")
+    conn = sqlite3.connect(".EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM BookStore")
     rows = cur.fetchall()
@@ -36,7 +36,7 @@ def search(title="", author="", year="", isbn=""):
     """
     Searches for Specified iem
     """
-    conn = sqlite3.connect("EmyBookStore.db")
+    conn = sqlite3.connect(".EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("SELECT * FROM BookStore WHERE title=? \
                 OR author=? OR year=? OR isbn=?",
@@ -52,7 +52,7 @@ def search(title="", author="", year="", isbn=""):
 
 
 def add(title, author, year, isbn):
-    conn = sqlite3.connect("EmyBookStore.db")
+    conn = sqlite3.connect(".EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("INSERT INTO BookStore \
                 VALUES (NULL, ?, ?, ?, ?)",
@@ -62,7 +62,7 @@ def add(title, author, year, isbn):
 
 
 def update(id, title="", author="", year="", isbn=""):
-    conn = sqlite3.connect("EmyBookStore.db")
+    conn = sqlite3.connect(".EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("UPDATE BookStore SET title=?, author=?, year=?, \
                 isbn=? WHERE id=?", (title, author, year, isbn, id))
@@ -71,7 +71,7 @@ def update(id, title="", author="", year="", isbn=""):
 
 
 def delete(id):
-    conn = sqlite3.connect("EmyBookStore.db")
+    conn = sqlite3.connect(".EmyBookStore.db")
     cur = conn.cursor()
     cur.execute("DELETE FROM BookStore WHERE id=?", (id,))
     conn.commit()
