@@ -8,6 +8,8 @@ EmyBookStore is a simple book inventory management system with a graphical user 
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
+  - [Linux Standalone App](#linux-standalone-app)
+  - [Windows Standalone App](#windows-standalone-app)
 - [Author](#author)
 - [Contact](#contact)
 
@@ -76,6 +78,22 @@ Run the EmyBookStore application:
 
 ```bash
 python src/frontend.py
+```
+
+### Linux Standalone App
+
+To create a standalone app for Linux, use the following command:
+
+```bash
+pyinstaller --onefile --windowed src/frontend.py
+```
+
+### Windows Standalone App
+
+For Windows, use the following command:
+
+```bash
+pyinstaller --onefile --noconsole src/frontend.py
 ```
 
 The GUI will open, providing options to view, search, add, update, and delete books in the inventory.
