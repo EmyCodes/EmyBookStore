@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 from tkinter import *
 
-from backend import connect, add, update, delete, search, view
+from models import dbModel
+
+db = dbModel()
 
 """
 GUI of BookStore
@@ -38,13 +40,13 @@ def get_selected_row(event):
 
 def view_all():
     list_box1.delete(0, END)
-    for row in view():
+    for row in db.view():
         list_box1.insert(END, row)
     # list_box1.insert(END, f"{len(view())}")
 
 
 def add_command():
-    add(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    db.add(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
     list_box1.delete(0, END)
     list_box1.insert(END, (title_text.get(), author_text.get(),
                            year_text.get(), isbn_text.get()))
@@ -53,14 +55,14 @@ def add_command():
 def update_command():
     list_box1.delete(0, END)
     id = selected_tuple[0]
-    update(id, title_text.get(), author_text.get(),
+    db.update(id, title_text.get(), author_text.get(),
            year_text.get(), isbn_text.get())
     list_box1.insert(END, (id, title_text.get(), author_text.get(),
                            year_text.get(), isbn_text.get()))
 
 
 def delete_command():
-    delete(selected_tuple[0])
+    db.delete(selected_tuple[0])
     list_box1.delete(0, END)
     for row in view():
         list_box1.insert(END, row)
@@ -68,7 +70,7 @@ def delete_command():
 
 def search_command():
     list_box1.delete(0, END)
-    rows = search(title_text.get(), author_text.get(),
+    rows = db.search(title_text.get(), author_text.get(),
                   year_text.get(), isbn_text.get())
     if len(rows) == 0:
         list_box1.insert(END, "No records")
@@ -147,4 +149,5 @@ list_box1.bind("<<ListboxSelect>>", get_selected_row)
 
 __copyright = Label(window, text="(C) EmyCodes 2024")
 __copyright.grid(row=7, column=1, columnspan=2)
+
 window.mainloop()
