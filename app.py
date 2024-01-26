@@ -1,27 +1,31 @@
 #!/usr/bin/python3
+import sqlite3
 from tkinter import *
 
 from models import dbModel
 
-db = dbModel()
-
 """
 GUI of BookStore
 
-HAS ENTRY:
-    Title
-    Author
-    Year
-    ISBN
+HAS ENTRY:\n
+    Title\n
+    Author\n
+    Year\n
+    ISBN\n
 
-HAS BUTTON;
-    View
-    Search Entry
-    Add Entry
-    Update Selected
-    Delete Selected
+HAS BUTTON:\n
+    View\n
+    Search Entry\n
+    Add Entry\n
+    Update Selected\n
+    Delete Selected\n
     Close
 """
+
+
+conn = sqlite3.connect(".EmyBookStore.db")
+cur = conn.cursor()
+db = dbModel(conn, cur)
 
 
 def get_selected_row(event):
@@ -42,7 +46,6 @@ def view_all():
     list_box1.delete(0, END)
     for row in db.view():
         list_box1.insert(END, row)
-    # list_box1.insert(END, f"{len(view())}")
 
 
 def add_command():
