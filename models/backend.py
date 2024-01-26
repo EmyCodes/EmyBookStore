@@ -21,7 +21,7 @@ class dbModel():
         self.conn.commit()
 
 
-    def connect(self):
+    def __connect(self):
         '''
         Method creates connection to the database
         '''
@@ -33,9 +33,10 @@ class dbModel():
         """
         Method lists items of the database
         """
+        self.__connect()
         self.cur.execute("SELECT * FROM BookStore")
         self.rows = self.cur.fetchall()
-        # self.conn.close()
+        self.conn.close()
         return self.rows
 
 
@@ -43,11 +44,12 @@ class dbModel():
         """
         Method searches for Specified item
         """
+        self.__connect()
         self.cur.execute("SELECT * FROM BookStore WHERE title=? "
                     "OR author=? OR year=? OR isbn=?",
                     (title, author, year, isbn))
         self.rows = self.cur.fetchall()
-        # self.conn.close()
+        self.conn.close()
         return self.rows
 
 
@@ -55,30 +57,33 @@ class dbModel():
         """
         Method adds entry to the database
         """
+        self.__connect()
         self.cur.execute("INSERT INTO BookStore "
                     "VALUES (NULL, ?, ?, ?, ?)",
                     (title, author, year, isbn))
         self.conn.commit()
-        # self.conn.close()
+        self.conn.close()
 
 
     def update(self, id, title="", author="", year="", isbn=""):
         """
         Method updates existing data
         """
+        self.__connect()
         self.cur.execute("UPDATE BookStore SET title=?, author=?, year=?, "
                     "isbn=? WHERE id=?", (title, author, year, isbn, id))
         self.conn.commit()
-        # self.conn.close()
+        self.conn.close()
 
 
     def delete(self, id):
         """
         Method deletse specified data
         """
+        self.__connect()
         self.cur.execute("DELETE FROM BookStore WHERE id=?", (id,))
         self.conn.commit()
-        # self.conn.close()
+        self.conn.close()
 
 
 # db = dbModel()
