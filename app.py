@@ -40,14 +40,12 @@ def get_selected_row(event):
 
 def view_all():
     list_box1.delete(0, END)
-    # db.connect()
     for row in db.view():
         list_box1.insert(END, row)
     # list_box1.insert(END, f"{len(view())}")
 
 
 def add_command():
-    # db.connect()
     db.add(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
     list_box1.delete(0, END)
     list_box1.insert(END, (title_text.get(), author_text.get(),
@@ -56,7 +54,6 @@ def add_command():
 
 def update_command():
     list_box1.delete(0, END)
-    # db.connect()
     id = selected_tuple[0]
     db.update(id, title_text.get(), author_text.get(),
            year_text.get(), isbn_text.get())
@@ -65,7 +62,6 @@ def update_command():
 
 
 def delete_command():
-    # db.connect()
     db.delete(selected_tuple[0])
     list_box1.delete(0, END)
     for row in db.view():
@@ -74,7 +70,6 @@ def delete_command():
 
 def search_command():
     list_box1.delete(0, END)
-    # db.connect()
     rows = db.search(title_text.get(), author_text.get(),
                   year_text.get(), isbn_text.get())
     if len(rows) == 0:
