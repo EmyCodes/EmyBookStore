@@ -2,6 +2,7 @@
 from tkinter import *
 
 from models.backend import add, update, delete, search, view
+from settings import *
 
 """
 GUI of BookStore
