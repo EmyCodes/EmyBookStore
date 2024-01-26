@@ -86,5 +86,5 @@ class dbModel():
         self.conn.close()
 
 
-db = dbModel()
+# db = dbModel()
 # print(db.view())
