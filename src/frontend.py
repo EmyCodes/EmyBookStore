@@ -40,6 +40,7 @@ def view_all():
     list_box1.delete(0, END)
     for row in view():
         list_box1.insert(END, row)
+    # list_box1.insert(END, f"{len(view())}")
 
 
 def add_command():
@@ -144,4 +145,6 @@ list_box1.config(yscrollcommand=sb1.set)
 sb1.config(command=list_box1.yview)
 list_box1.bind("<<ListboxSelect>>", get_selected_row)
 
+__copyright = Label(window, text="(C) EmyCodes 2024")
+__copyright.grid(row=7, column=1, columnspan=2)
 window.mainloop()
