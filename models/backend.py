@@ -9,13 +9,16 @@ class dbModel():
     Class Connect and Perform defined Methods
     """
     def __init__(self):
+        """
+        Initializing
+        """
         self.conn = sqlite3.connect(".EmyBookStore.db")
         self.cur = self.conn.cursor()
 
 
     def connect(self):
         """
-        Function creates connection to the database
+        Method creates connection to the database
         """
         self.cur.execute("CREATE TABLE IF NOT EXISTS BookStore \
                     (id INTEGER PRIMARY KEY, title text, \
@@ -26,7 +29,7 @@ class dbModel():
 
     def view(self):
         """
-        Function list items of the database
+        Method lists items of the database
         """
         self.cur.execute("SELECT * FROM BookStore")
         self.rows = self.cur.fetchall()
@@ -38,7 +41,7 @@ class dbModel():
 
     def search(self, title="", author="", year="", isbn=""):
         """
-        Searches for Specified iem
+        Method searches for Specified item
         """
         self.cur.execute("SELECT * FROM BookStore WHERE title=? \
                     OR author=? OR year=? OR isbn=?",
@@ -54,6 +57,9 @@ class dbModel():
 
 
     def add(self,title, author, year, isbn):
+        """
+        Method adds entry to the database
+        """
         self.cur.execute("INSERT INTO BookStore \
                     VALUES (NULL, ?, ?, ?, ?)",
                     (title, author, year, isbn))
@@ -62,6 +68,9 @@ class dbModel():
 
 
     def update(self, id, title="", author="", year="", isbn=""):
+        """
+        Method updates existing data
+        """
         self.cur.execute("UPDATE BookStore SET title=?, author=?, year=?, \
                     isbn=? WHERE id=?", (title, author, year, isbn, id))
         self.conn.commit()
@@ -69,6 +78,9 @@ class dbModel():
 
 
     def delete(self, id):
+        """
+        Method deletse specified data
+        """
         self.cur.execute("DELETE FROM BookStore WHERE id=?", (id,))
         self.conn.commit()
         self.conn.close()
