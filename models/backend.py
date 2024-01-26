@@ -21,19 +21,20 @@ class dbModel():
         self.conn.commit()
 
 
-    def __connect(self):
-        '''
-        Method creates connection to the database
-        '''
-        self.conn = sqlite3.connect(".EmyBookStore.db")
-        self.conn.cursor()
+    # def __connect(self):
+    #     '''
+    #     Method creates connection to the database
+    #     '''
+    #     self.conn = sqlite3.connect(".EmyBookStore.db")
+    #     self.conn.cursor()
 
 
     def view(self):
         """
         Method lists items of the database
         """
-        self.__connect()
+        self.conn = sqlite3.connect(".EmyBookStore.db")
+        self.conn.cursor()
         self.cur.execute("SELECT * FROM BookStore")
         self.rows = self.cur.fetchall()
         self.conn.close()
@@ -44,7 +45,8 @@ class dbModel():
         """
         Method searches for Specified item
         """
-        self.__connect()
+        self.conn = sqlite3.connect(".EmyBookStore.db")
+        self.conn.cursor()
         self.cur.execute("SELECT * FROM BookStore WHERE title=? "
                     "OR author=? OR year=? OR isbn=?",
                     (title, author, year, isbn))
@@ -57,7 +59,8 @@ class dbModel():
         """
         Method adds entry to the database
         """
-        self.__connect()
+        self.conn = sqlite3.connect(".EmyBookStore.db")
+        self.conn.cursor()
         self.cur.execute("INSERT INTO BookStore "
                     "VALUES (NULL, ?, ?, ?, ?)",
                     (title, author, year, isbn))
@@ -69,7 +72,8 @@ class dbModel():
         """
         Method updates existing data
         """
-        self.__connect()
+        self.conn = sqlite3.connect(".EmyBookStore.db")
+        self.conn.cursor()
         self.cur.execute("UPDATE BookStore SET title=?, author=?, year=?, "
                     "isbn=? WHERE id=?", (title, author, year, isbn, id))
         self.conn.commit()
@@ -80,7 +84,8 @@ class dbModel():
         """
         Method deletse specified data
         """
-        self.__connect()
+        self.conn = sqlite3.connect(".EmyBookStore.db")
+        self.conn.cursor()
         self.cur.execute("DELETE FROM BookStore WHERE id=?", (id,))
         self.conn.commit()
         self.conn.close()
