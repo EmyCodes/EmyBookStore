@@ -10,21 +10,23 @@ class dbModel():
     """
     def __init__(self):
         """
-        Initializing
+        Initializing, creates connection to the database
+        and create table
         """
         self.conn = sqlite3.connect(".EmyBookStore.db")
         self.cur = self.conn.cursor()
-
-
-    def connect(self):
-        """
-        Method creates connection to the database
-        """
         self.cur.execute("CREATE TABLE IF NOT EXISTS BookStore \
                     (id INTEGER PRIMARY KEY, title text, \
                     author text, year integer, isbn integer)")
         self.conn.commit()
-        self.conn.close()
+
+
+    def connect(self):
+        '''
+        Method creates connection to the database
+        '''
+        self.conn = sqlite3.connect(".EmyBookStore.db")
+        self.conn.cursor()
 
 
     def view(self):
@@ -33,7 +35,7 @@ class dbModel():
         """
         self.cur.execute("SELECT * FROM BookStore")
         self.rows = self.cur.fetchall()
-        self.conn.close()
+        # self.conn.close()
         # for i in range(len(rows)):
         #     print(rows[i])
         return self.rows
@@ -47,10 +49,11 @@ class dbModel():
                     OR author=? OR year=? OR isbn=?",
                     (title, author, year, isbn))
         self.rows = self.cur.fetchall()
+        self.conn.close()
         # if len(rows) == 0:
         #     return "Not Found"
         # print(rows)
-        self.conn.close()
+        # self.conn.close()
         # for i in range(len(rows)):
         #     print(rows[i])
         return self.rows
