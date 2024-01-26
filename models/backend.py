@@ -35,7 +35,7 @@ class dbModel():
         """
         self.cur.execute("SELECT * FROM BookStore")
         self.rows = self.cur.fetchall()
-        self.conn.close()
+        # self.conn.close()
         return self.rows
 
 
@@ -47,7 +47,7 @@ class dbModel():
                     "OR author=? OR year=? OR isbn=?",
                     (title, author, year, isbn))
         self.rows = self.cur.fetchall()
-        self.conn.close()
+        # self.conn.close()
         return self.rows
 
 
@@ -59,7 +59,7 @@ class dbModel():
                     "VALUES (NULL, ?, ?, ?, ?)",
                     (title, author, year, isbn))
         self.conn.commit()
-        self.conn.close()
+        # self.conn.close()
 
 
     def update(self, id, title="", author="", year="", isbn=""):
@@ -69,7 +69,7 @@ class dbModel():
         self.cur.execute("UPDATE BookStore SET title=?, author=?, year=?, "
                     "isbn=? WHERE id=?", (title, author, year, isbn, id))
         self.conn.commit()
-        self.conn.close()
+        # self.conn.close()
 
 
     def delete(self, id):
@@ -78,7 +78,7 @@ class dbModel():
         """
         self.cur.execute("DELETE FROM BookStore WHERE id=?", (id,))
         self.conn.commit()
-        self.conn.close()
+        # self.conn.close()
 
 
 # db = dbModel()
