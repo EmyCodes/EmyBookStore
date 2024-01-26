@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from tkinter import *
 
-from models import dbModel
+from models.backend import dbModel
 
 db = dbModel()
 
