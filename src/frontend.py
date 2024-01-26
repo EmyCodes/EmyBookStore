@@ -2,8 +2,11 @@
 from tkinter import *
 
 from models.backend import add, update, delete, search, view
-from settings import *
-
+from settings import (
+    title_text, author_text, year_text, isbn_text,
+    list_box1,
+    selected_tuple
+)
 """
 GUI of BookStore
 
@@ -23,18 +26,18 @@ HAS BUTTON;
 """
 
 
-def get_selected_row(event):
-    global selected_tuple
-    index = list_box1.curselection()[0]
-    selected_tuple = list_box1.get(index)
-    e1.delete(0, END)
-    e1.insert(END, selected_tuple[1])
-    e2.delete(0, END)
-    e2.insert(END, selected_tuple[2])
-    e3.delete(0, END)
-    e3.insert(END, selected_tuple[3])
-    e4.delete(0, END)
-    e4.insert(END, selected_tuple[4])
+# def get_selected_row(event):
+#     global selected_tuple
+#     index = list_box1.curselection()[0]
+#     selected_tuple = list_box1.get(index)
+#     e1.delete(0, END)
+#     e1.insert(END, selected_tuple[1])
+#     e2.delete(0, END)
+#     e2.insert(END, selected_tuple[2])
+#     e3.delete(0, END)
+#     e3.insert(END, selected_tuple[3])
+#     e4.delete(0, END)
+#     e4.insert(END, selected_tuple[4])
 
 
 def view_all():
@@ -75,5 +78,3 @@ def search_command():
         list_box1.insert(END, "No records")
     for row in rows:
         list_box1.insert(END, row)
-
-

@@ -1,10 +1,26 @@
 #!/usr/bin/python3
 from tkinter import *
 # from frontend import view_all
-from src import (
-    get_selected_row, add_command, delete_command, update_command,
+
+from src.frontend import (
+    add_command, delete_command, update_command,
     search_command, view_all
 )
+
+def get_selected_row(event):
+    global selected_tuple
+    index = list_box1.curselection()[0]
+    selected_tuple = list_box1.get(index)
+    e1.delete(0, END)
+    e1.insert(END, selected_tuple[1])
+    e2.delete(0, END)
+    e2.insert(END, selected_tuple[2])
+    e3.delete(0, END)
+    e3.insert(END, selected_tuple[3])
+    e4.delete(0, END)
+    e4.insert(END, selected_tuple[4])
+
+
 
 window = Tk()
 
