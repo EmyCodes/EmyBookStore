@@ -23,12 +23,16 @@ HAS BUTTON:\n
 """
 
 
+# Create Connection to db
 conn = sqlite3.connect(".EmyBookStore.db")
 cur = conn.cursor()
 db = dbModel(conn, cur)
 
 
 def get_selected_row(event):
+    """
+    Returns list of selected row
+    """
     global selected_tuple
     index = list_box1.curselection()[0]
     selected_tuple = list_box1.get(index)
@@ -43,6 +47,7 @@ def get_selected_row(event):
 
 
 def view_all():
+    """View command"""
     list_box1.delete(0, END)
     for row in db.view():
         list_box1.insert(END, row)
@@ -56,6 +61,7 @@ def add_command():
 
 
 def update_command():
+    """update command"""
     list_box1.delete(0, END)
     id = selected_tuple[0]
     db.update(id, title_text.get(), author_text.get(),
@@ -72,6 +78,7 @@ def delete_command():
 
 
 def search_command():
+    """Search command"""
     list_box1.delete(0, END)
     rows = db.search(title_text.get(), author_text.get(),
                   year_text.get(), isbn_text.get())
@@ -82,6 +89,7 @@ def search_command():
 
 
 def close_commaand():
+    """Close command"""
     conn.close()
     window.destroy()
 
