@@ -81,6 +81,11 @@ def search_command():
         list_box1.insert(END, row)
 
 
+def close_commaand():
+    conn.close()
+    window.destroy()
+
+
 window = Tk()
 
 
@@ -136,7 +141,7 @@ b5 = Button(window, text="Delete Selected", width=12,
             border=3, command=delete_command)
 b5.grid(row=6, column=3)
 
-b6 = Button(window, text="Close", width=12, border=3, command=window.destroy)
+b6 = Button(window, text="Close", width=12, border=3, command=close_commaand)
 b6.grid(row=7, column=3)
 
 # ListBox
