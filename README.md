@@ -8,25 +8,41 @@ EmyBookStore is a simple book inventory management system with a graphical user 
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-  - [Running the Application](#running-the-application)
-  - [Creating Standalone Apps](#creating-standalone-apps)
+  - [Linux Standalone App](#linux-standalone-app)
+  - [Windows Standalone App](#windows-standalone-app)
 - [Author](#author)
 - [Contact](#contact)
 
 ## Project Structure
 
-```bash
+```
 .
-├── ./app.py
-├── ./app.spec
-├── ./AUTHOR
-├── ./dist
-│   └── ./dist/app
-├── ./models
-│   ├── ./models/backend.py
-│   ├── ./models/__init__.py
-├── ./README.md
-└── ./requirements.txt
+├── AUTHOR
+├── build
+│   └── frontend
+│       # ... (PyInstaller build artifacts)
+├── dist
+│   └── frontend
+├── frontend.spec
+├── README.md
+├── requirements.txt
+├── src
+│   ├── backend.py
+│   ├── frontend.py
+│   └── __pycache__
+│       └── backend.cpython-310.pyc
+└── v1
+    ├── AUTHOR
+    ├── README.md
+    └── src
+        ├── backend
+        │   ├── EmyBookStore.db
+        │   ├── engine.py
+        │   └── __init__.py
+        ├── frontend
+        │   ├── gui.py
+        │   └── __init__.py
+        └── __init__.py
 ```
 
 ## Getting Started
@@ -40,64 +56,55 @@ EmyBookStore is a simple book inventory management system with a graphical user 
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/EmyCodes/EmyBookStore.git
-```
+   ```bash
+   git clone https://github.com/EmyCodes/EmyBookStore.git
+   ```
 
 2. Navigate to the project directory:
 
-```bash
-cd EmyBookStore
-```
+   ```bash
+   cd EmyBookStore
+   ```
 
 3. Install the required dependencies:
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
-
-### Running the Application
 
 Run the EmyBookStore application:
 
 ```bash
-python app.py
+python src/frontend.py
 ```
 
-### Creating Standalone Apps
-
-#### Linux Standalone App
+### Linux Standalone App
 
 To create a standalone app for Linux, use the following command:
 
 ```bash
-pyinstaller --onefile --windowed app.py
+pyinstaller --onefile --windowed src/frontend.py
 ```
 
-#### Windows Standalone App
+### Windows Standalone App
 
 For Windows, use the following command:
 
 ```bash
-pyinstaller --onefile --noconsole app.py
+pyinstaller --onefile --noconsole src/frontend.py
 ```
 
 The GUI will open, providing options to view, search, add, update, and delete books in the inventory.
 
 ## Author
 
-- GitHub Username: [EmyCodes](https://github.com/EmyCodes)
+- GitHub Username: EmyCodes
 - Full Name: Ogundare Olamide Emmanuel
-- Twitter: [EmyCodes](https://twitter.com/EmyCodes)
+- Twitter: [@EmyCodes](https://twitter.com/EmyCodes)
 - LinkedIn: [EmyCodes](https://linkedin.com/in/emycodes)
 
 ## Contact
 
-For any inquiries or feedback, please contact [EmyCodes](ogundareolamideemmanuel@gmail.com).
-
-```pl
-
-This version of the README excludes the `build/` directory and `*/__pycache__/` entries from the project structure.
-```
+For any inquiries or feedback, please contact [EmyCodes](https://twitter.com/EmyCodes).
