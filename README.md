@@ -88,8 +88,8 @@ The GUI will open, providing options to view, search, add, update, and delete bo
 
 ## Author
 
-- GitHub Username: [EmyCodes](https://github.com/EmyCodes)
 - Full Name: Ogundare Olamide Emmanuel
+- GitHub Username: [EmyCodes](https://github.com/EmyCodes)
 - Twitter: [EmyCodes](https://twitter.com/EmyCodes)
 - LinkedIn: [EmyCodes](https://linkedin.com/in/emycodes)
 
