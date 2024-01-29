@@ -97,6 +97,7 @@ The GUI will open, providing options to view, search, add, update, and delete bo
 
 For any inquiries or feedback, please contact [EmyCodes](ogundareolamideemmanuel@gmail.com).
 
+
 ```pl
 
 This version of the README excludes the `build/` directory and `*/__pycache__/` entries from the project structure.
